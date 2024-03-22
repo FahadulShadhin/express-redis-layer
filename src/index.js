@@ -1,5 +1,5 @@
 import dotenv from 'dotenv';
-import { connectDB } from './config/index.js';
+import { connectDB, initializeRedisClient } from './config/index.js';
 import { app } from './app.js';
 import { PORT } from './constants.js';
 
@@ -8,11 +8,13 @@ dotenv.config({
 });
 
 connectDB()
-  .then(() => {
+  .then(async () => {
     app.on('error', (error) => {
       console.log('ERROR:', error);
       throw error;
     });
+
+    await initializeRedisClient();
 
     app.listen(PORT, () => {
       console.log(`Server is running at port: ${PORT}`);
