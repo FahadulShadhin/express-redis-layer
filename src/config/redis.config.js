@@ -4,11 +4,9 @@ import { REDIS_URI } from '../constants.js';
 let redisClient = undefined;
 
 const initializeRedisClient = async () => {
-  if (REDIS_URI) {
-    redisClient = createClient({ url: REDIS_URI }).on('error', (error) => {
-      console.log('Failed to create the redis client:', error);
-    });
-  }
+  redisClient = createClient({ url: REDIS_URI }).on('error', (error) => {
+    console.log('Failed to create the redis client:', error);
+  });
 
   try {
     await redisClient.connect();
