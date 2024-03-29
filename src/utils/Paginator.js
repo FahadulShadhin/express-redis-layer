@@ -17,8 +17,6 @@ export default class Paginator {
     const nextPage = this.page < totalPages ? this.page + 1 : null;
     const previousPage = this.page > 1 ? this.page - 1 : null;
 
-    console.log(Model.collection.name);
-
     return {
       [collectionName]: documents,
       pagination: {
