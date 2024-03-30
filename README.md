@@ -2,7 +2,7 @@
 
 A middleware to easily add redis caching to express routes
 
-## Usage
+## Use:
 
 - Start redis server
 
