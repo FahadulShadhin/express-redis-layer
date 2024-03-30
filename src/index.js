@@ -1,7 +1,9 @@
 import dotenv from 'dotenv';
-import { connectDB, initializeRedisClient } from './config/index.js';
 import { app } from './app.js';
 import { PORT } from './constants.js';
+import connectDB from './config/db.config.js';
+import { initializeRedisClient } from './config/redis.config.js';
+import colors from 'colors';
 
 dotenv.config({
   path: './.env',
@@ -17,9 +19,9 @@ connectDB()
     await initializeRedisClient();
 
     app.listen(PORT, () => {
-      console.log(`Server is running at port: ${PORT}`);
+      console.log(`[server] running at port: ${PORT}`.cyan);
     });
   })
   .catch((error) => {
-    console.log('MongoDB connection error!', error);
+    console.log('[mongodb] connection error!'.red, error);
   });

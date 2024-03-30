@@ -1,4 +1,4 @@
-import { Movie } from '../models/index.js';
+import { Movie } from '../models/movie.model.js';
 import {
   Paginator,
   ApiResponse,
