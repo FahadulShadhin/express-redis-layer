@@ -5,7 +5,7 @@ import {
   readData,
 } from '../config/redis.config.js';
 
-export default function redisCliendMiddleware(
+export default function redisClientMiddleware(
   options = {
     EX: 21600, // 6hrs
   }
